@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DbConnectionService {
 
-  svr_ip = '192.168.100.48';
+  svr_ip = 'localhost';
   svr_port = '3000';
 
   svr_url = `http://${this.svr_ip}:${this.svr_port}/`;
