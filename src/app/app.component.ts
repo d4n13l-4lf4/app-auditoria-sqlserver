@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {DbConnectionService} from './db-connection.service';
+import {relaciones_existentes} from './sql_queries/relaciones-existentes';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
   constructor( private readonly _db_connection: DbConnectionService) { }
 
   obtenerAnomalias() {
-    this._db_connection.ejecutarSQL('DBCC CHECKCONSTRAINTS WITH ALL_CONSTRAINTS').subscribe(
+    this._db_connection.ejecutarSQL(relaciones_existentes).subscribe(
       value => {
         this.respuesta = value;
       },
@@ -25,6 +26,6 @@ export class AppComponent {
       () => {
         this.complete = 'Petición completada';
       }
-    )
+    );
   }
 }
