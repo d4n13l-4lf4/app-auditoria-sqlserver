@@ -1,0 +1,12 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th *ngFor="let cabecera of cabeceras; let indice = index" scope="col">{{cabecera}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let atributo of atributos; let indice = index">
+    <td *ngFor="let valor of atributos[indice]" scope="row">{{valor}}</td>
+  </tr>
+  </tbody>
+</table>

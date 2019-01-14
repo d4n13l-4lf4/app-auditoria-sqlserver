@@ -1,4 +1,5 @@
-<button class="btn btn-primary" (click)="obtenerAnomalias()">Obtener anomalías</button>
-<p *ngIf="respuesta" > {{ respuesta | json }}</p>
+<button class="btn btn-primary" (click)="obtenerRelacionesRequierenIR()">Obtener anomalías</button>
+<!--<p *ngIf="respuesta" > {{ respuesta | json }}</p>
 <p *ngIf="error" > {{ error }}</p>
-<p *ngIf="complete" > {{ complete }} </p>
+<p *ngIf="complete" > {{ complete }} </p>-->
+<app-tabla [cabeceras]="this.cabeceras" [atributos]="this.atributos"></app-tabla>
