@@ -1,0 +1,17 @@
+<button type="button" class="btn btn-primary" (click)="obtenerRelacionesExistentes(); obtenerRelacionesRequierenIR()">Identificar</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <app-tabla [cabeceras]="cabecerasRE" [datos]="datosRE"></app-tabla>
+    </div>
+    <div class="col-7"></div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <app-tabla [cabeceras]="cabecerasIR" [datos]="datosIR"></app-tabla>
+    </div>
+    <div class="col-7"></div>
+  </div>
+</div>
+
+
