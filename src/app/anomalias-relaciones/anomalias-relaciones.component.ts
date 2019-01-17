@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {relaciones_requiere_integridad_referencial} from '../sql_queries/relaciones-requieren-integridad-referencial';
 import {relaciones_existentes} from '../sql_queries/relaciones-existentes';
 import {DbConnectionService} from '../db-connection.service';
+import {relaciones_necesarias} from '../sql_queries/relaciones-necesarias';
 
 @Component({
   selector: 'app-anomalias-relaciones',
@@ -10,9 +11,11 @@ import {DbConnectionService} from '../db-connection.service';
 })
 export class AnomaliasRelacionesComponent implements OnInit {
   cabecerasRE = [];
-  datosRE = [];
   cabecerasIR = [];
+  cabecerasDE = [];
+  datosRE = [];
   datosIR = [];
+  datosDE = [];
   respuesta;
   error;
   complete;
@@ -50,6 +53,20 @@ export class AnomaliasRelacionesComponent implements OnInit {
       }
     );
   }
-  obtenerRelacionesDeberianExistir() {}
+  obtenerRelacionesDeberianExistir() {
+    this._db_connection.ejecutarSQL(relaciones_necesarias).subscribe(
+      value => {
+        this.respuesta = value;
+        this.cabecerasDE = Object.keys(this.respuesta[0]);
+        this.datosDE = Object.values(this.respuesta);
+      },
+      error1 => {
+        this.error = error1;
+      },
+      () => {
+        this.complete = 'Petición completada';
+      }
+    );
+  }
 
 }
