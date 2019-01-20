@@ -1,11 +1,7 @@
-
-.nav-menu {
-  padding: 0;
+.btn-outline-primary {
+  margin: auto;
 }
 
-p {
-  text-align: justify;
-}
-.card {
-  height: 100%;
+.nav-link {
+  font-weight: bold;
 }

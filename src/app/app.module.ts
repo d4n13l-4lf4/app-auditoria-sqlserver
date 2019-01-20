@@ -8,6 +8,15 @@ import { AnomaliasRelacionesComponent } from './anomalias-relaciones/anomalias-r
 import { AnomaliasIntegridadComponent } from './anomalias-integridad/anomalias-integridad.component';
 import { AnomaliasDatosComponent } from './anomalias-datos/anomalias-datos.component';
 import { LogComponent } from './log/log.component';
+import {RouterModule, Routes} from '@angular/router';
+
+
+const rutas: Routes = [
+  { path: 'anomalias-datos', component: AnomaliasDatosComponent },
+  { path: 'anomalias-integridad', component: AnomaliasIntegridadComponent},
+  { path: 'anomalias-relaciones', component: AnomaliasRelacionesComponent},
+  { path: 'log', component: LogComponent}
+];
 
 @NgModule({
   declarations: [
@@ -20,7 +29,10 @@ import { LogComponent } from './log/log.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      rutas
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
