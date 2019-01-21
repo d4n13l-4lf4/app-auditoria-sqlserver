@@ -12,7 +12,7 @@
       <button class="btn btn-success w-100" (click)="habilitarAuditoria()">Habilitar auditoría</button>
     </div>
     <div class="col-sm-12">
-      <button class="btn btn-primary w-100" (click)="generarLog()" [disabled]="logDeshabilitado">Generar Log</button>
+      <button class="btn btn-primary w-100" (click)="obtenerPrefijo(); generarLog()">Generar Log</button>
     </div>
   </div>
 </div>
