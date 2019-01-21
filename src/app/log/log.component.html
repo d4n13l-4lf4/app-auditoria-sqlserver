@@ -1,16 +1,19 @@
 <div class="row justify-content-center">
   <div class="col-sm-8">
     <div class="input-group">
-      <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-        <option selected>Elija una opción</option>
+      <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" #s>
+        <option value="0" selected>Elija una opción</option>
         <option value="1">Anomalías de relaciones</option>
         <option value="2">Anomalías en la definición de IR</option>
-        <option value="3">Anomalías de datos</option>
+        <option value="3" #v3>Anomalías de datos</option>
         <option value="4">Todos</option>
       </select>
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Generar</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="generarLog(s.value)" [disabled]="log_habilitado">Generar</button>
       </div>
     </div>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-success" (click)="habilitarAuditoria()">Habilitar auditoría</button>
   </div>
 </div>

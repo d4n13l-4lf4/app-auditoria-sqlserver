@@ -14,6 +14,7 @@ export class TablaComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {}
+
   recorrerAtributos() {
     for (let i = 0; i < this.datos.length; i++) {
       const obj = this.datos[i];
@@ -25,6 +26,7 @@ export class TablaComponent implements OnInit, OnChanges {
       this.valor = [];
     }
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.atributos = [];
     this.recorrerAtributos();
