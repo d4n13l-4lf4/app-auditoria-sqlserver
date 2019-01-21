@@ -10,7 +10,7 @@ import {creacion_auditoria, espec_audit_bd, habilitacion_auditoria} from '../sql
 })
 export class LogComponent implements OnInit {
 
-  log_habilitado = true;
+  logDeshabilitado = true;
 
   constructor(
     private readonly dbConnection: DbConnectionService
@@ -23,20 +23,21 @@ export class LogComponent implements OnInit {
   }
 
   habilitarAuditoria() {
-    this.dbConnection.ejecutarSQL(creacion_auditoria).subscribe(
-      value => {
-        this.dbConnection.ejecutarSQL(habilitacion_auditoria).subscribe(
-          value1 => {
-            this.dbConnection.ejecutarSQL(espec_audit_bd).subscribe(
-              value2 => {
-                this.log_habilitado = false;
-              }
-            );
-          }
-        );
-      }
-    );
-
+    if (this.logDeshabilitado) {
+      this.dbConnection.ejecutarSQL(creacion_auditoria).subscribe(
+        value => {
+          this.dbConnection.ejecutarSQL(habilitacion_auditoria).subscribe(
+            value1 => {
+              this.dbConnection.ejecutarSQL(espec_audit_bd).subscribe(
+                value2 => {
+                  this.logDeshabilitado = false;
+                }
+              );
+            }
+          );
+        }
+      );
+    }
   }
 
 }

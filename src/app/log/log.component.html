@@ -1,16 +1,18 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center align-items-center">
   <div class="col-4" style="padding-right: 5px">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Descripción</h5>
-        <p class="card-text">La tabla muestra las relaciones existentes en la Base de Datos. Muestra el nombre de la Foreign Key, las tablas con las respectivas columnas que poseen dicha Foreign Key, así como la tabla y columnas a la que hacen referencia</p>
+        <p class="card-text">La tabla muestra el log de operaciones realizadas sobre la base de datos.</p>
       </div>
     </div>
   </div>
   <div class="col-sm-2">
-    <button class="btn btn-primary" (click)="generarLog()">Generar Log</button>
-  </div>
-  <div class="col-sm-2">
-    <button class="btn btn-success" (click)="habilitarAuditoria()">Habilitar auditoría</button>
+    <div class="col-sm-12 mb-2">
+      <button class="btn btn-success w-100" (click)="habilitarAuditoria()">Habilitar auditoría</button>
+    </div>
+    <div class="col-sm-12">
+      <button class="btn btn-primary w-100" (click)="generarLog()" [disabled]="logDeshabilitado">Generar Log</button>
+    </div>
   </div>
 </div>
