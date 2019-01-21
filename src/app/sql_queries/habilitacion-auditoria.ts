@@ -1,6 +1,6 @@
 export const creacion_auditoria = `
 USE master;
-CREATE SERVER AUDIT Auditoria_BD TO FILE ( FILEPATH = 'C:\\Users\\Marcelo' )`;
+CREATE SERVER AUDIT Auditoria_BD TO FILE ( FILEPATH = 'C:\\Daniel\\Auditoría' )`;
 
 export const habilitacion_auditoria = `
 USE master; 
@@ -14,7 +14,8 @@ WITH (STATE = ON)`;
 
 export const prefijo_archivo_log = `SELECT log_file_name from sys.server_file_audits where name='Auditoria_BD';`;
 
-export const log_auditoria = `SELECT distinct fn.event_time, 
+export const log_auditoria = (prefijo: string) => {
+  return `SELECT distinct fn.event_time, 
 	   fn.action_id, 
 	   dm.name, 
 	   fn.server_instance_name, 
@@ -23,7 +24,7 @@ export const log_auditoria = `SELECT distinct fn.event_time,
 	   fn.schema_name, 
 	   fn.object_name, 
 	   fn.statement    
- FROM sys.fn_get_audit_file ('C:\\Users\\Marcelo\\Payrole_Security_Audit_F6C9812D-40C5-439B-B0E6-767D8DFB03C8*.sqlaudit', DEFAULT, DEFAULT) as fn
+ FROM sys.fn_get_audit_file ('C:\\Daniel\\Auditoría\\${prefijo}', DEFAULT, DEFAULT) as fn
  inner join sys.dm_audit_actions as dm on fn.action_id = dm.action_id
  WHERE (dm.name = 'ALTER' or 
 	  dm.name = 'DROP' or 
@@ -33,5 +34,7 @@ export const log_auditoria = `SELECT distinct fn.event_time,
 	  dm.name = 'DELETE') and
 	  database_name = 'Orders'
 `;
+
+}
 
 
