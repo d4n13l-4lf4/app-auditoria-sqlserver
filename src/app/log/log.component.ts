@@ -72,7 +72,7 @@ export class LogComponent implements OnInit {
           );
         }
       );
-    } else{
+    } else {
       console.log('Auditoría habilitada!');
     }
   }
