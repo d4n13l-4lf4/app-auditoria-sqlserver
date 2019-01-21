@@ -10,7 +10,6 @@ import { AnomaliasDatosComponent } from './anomalias-datos/anomalias-datos.compo
 import { LogComponent } from './log/log.component';
 import {RouterModule, Routes} from '@angular/router';
 
-
 const rutas: Routes = [
   { path: 'anomalias-datos', component: AnomaliasDatosComponent },
   { path: 'anomalias-integridad', component: AnomaliasIntegridadComponent},
