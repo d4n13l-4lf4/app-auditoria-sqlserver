@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LogService} from '../log.service';
 import {DbConnectionService} from '../db-connection.service';
-import {relaciones_necesarias} from '../sql_queries/relaciones-necesarias';
-import {relaciones_existentes} from '../sql_queries/relaciones-existentes';
+
 import {creacion_auditoria, espec_audit_bd, habilitacion_auditoria} from '../sql_queries/habilitacion-auditoria';
 
 @Component({
@@ -21,8 +19,7 @@ export class LogComponent implements OnInit {
   ngOnInit() {
   }
 
-  generarLog(s) {
-    console.log(s);
+  generarLog() {
   }
 
   habilitarAuditoria() {

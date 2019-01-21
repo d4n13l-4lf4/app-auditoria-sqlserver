@@ -1,17 +1,14 @@
 <div class="row justify-content-center">
-  <div class="col-sm-8">
-    <div class="input-group">
-      <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" #s>
-        <option value="0" selected>Elija una opción</option>
-        <option value="1">Anomalías de relaciones</option>
-        <option value="2">Anomalías en la definición de IR</option>
-        <option value="3" #v3>Anomalías de datos</option>
-        <option value="4">Todos</option>
-      </select>
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="generarLog(s.value)" [disabled]="log_habilitado">Generar</button>
+  <div class="col-4" style="padding-right: 5px">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Descripción</h5>
+        <p class="card-text">La tabla muestra las relaciones existentes en la Base de Datos. Muestra el nombre de la Foreign Key, las tablas con las respectivas columnas que poseen dicha Foreign Key, así como la tabla y columnas a la que hacen referencia</p>
       </div>
     </div>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-primary" (click)="generarLog()">Generar Log</button>
   </div>
   <div class="col-sm-2">
     <button class="btn btn-success" (click)="habilitarAuditoria()">Habilitar auditoría</button>
