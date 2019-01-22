@@ -65,8 +65,10 @@ export class AnomaliasDatosComponent implements OnInit {
       this._db_connection.ejecutarSQL(anomalias_constraints(this.constraints[i])).subscribe(
         value => {
           this.respuesta = value;
-          this.cabecerasConstraints = Object.keys(this.respuesta[0]);
-          this.datosConstraints.push((Object.values(this.respuesta[0])));
+          if (this.respuesta !== null) {
+            this.cabecerasConstraints = Object.keys(this.respuesta[0]);
+            this.datosConstraints.push((Object.values(this.respuesta[0])));
+          }
         },
         error1 => {
           this.error = error1;
@@ -105,8 +107,10 @@ export class AnomaliasDatosComponent implements OnInit {
       this._db_connection.ejecutarSQL(querySQL).subscribe(
         value => {
           this.respuesta = value;
-          this.cabecerasAnomaliaDatos = Object.keys(this.respuesta[0]);
-          this.datosAnomaliaDatos = Object.values(this.respuesta);
+          if (this.respuesta.length !== 0) {
+            this.cabecerasAnomaliaDatos = Object.keys(this.respuesta[0]);
+            this.datosAnomaliaDatos = Object.values(this.respuesta);
+          }
         },
         error1 => {
           this.error = error1;
@@ -121,8 +125,10 @@ export class AnomaliasDatosComponent implements OnInit {
     this._db_connection.ejecutarSQL(triggers_consulta).subscribe(
       value => {
         this.respuesta = value;
-        this.cabecerasTriggers = Object.keys(this.respuesta[0]);
-        this.datosTriggers = Object.values(this.respuesta);
+        if (this.respuesta.length !== 0) {
+          this.cabecerasTriggers = Object.keys(this.respuesta[0]);
+          this.datosTriggers = Object.values(this.respuesta);
+        }
       },
       error1 => {
         this.error = error1;
