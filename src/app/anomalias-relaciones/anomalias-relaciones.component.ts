@@ -27,8 +27,10 @@ export class AnomaliasRelacionesComponent implements OnInit {
     this._db_connection.ejecutarSQL(relaciones_existentes).subscribe(
       value => {
         this.respuesta = value;
-        this.cabecerasRE = Object.keys(this.respuesta[0]);
-        this.datosRE = Object.values(this.respuesta);
+        if (this.respuesta.length !== 0) {
+          this.cabecerasRE = Object.keys(this.respuesta[0]);
+          this.datosRE = Object.values(this.respuesta);
+        }
       },
       error1 => {
         this.error = error1;
@@ -42,8 +44,10 @@ export class AnomaliasRelacionesComponent implements OnInit {
     this._db_connection.ejecutarSQL(relaciones_requiere_integridad_referencial).subscribe(
       value => {
         this.respuesta = value;
-        this.cabecerasIR = Object.keys(this.respuesta[0]);
-        this.datosIR = Object.values(this.respuesta);
+        if (this.respuesta.length !== 0) {
+          this.cabecerasIR = Object.keys(this.respuesta[0]);
+          this.datosIR = Object.values(this.respuesta);
+        }
       },
       error1 => {
         this.error = error1;
@@ -57,8 +61,10 @@ export class AnomaliasRelacionesComponent implements OnInit {
     this._db_connection.ejecutarSQL(relaciones_necesarias).subscribe(
       value => {
         this.respuesta = value;
-        this.cabecerasDE = Object.keys(this.respuesta[0]);
-        this.datosDE = Object.values(this.respuesta);
+        if (this.respuesta.length !== 0) {
+          this.cabecerasDE = Object.keys(this.respuesta[0]);
+          this.datosDE = Object.values(this.respuesta);
+        }
       },
       error1 => {
         this.error = error1;
