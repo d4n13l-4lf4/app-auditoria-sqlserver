@@ -4,6 +4,7 @@ import {anomalias_constraints, anomalias_relaciones_necesarias} from '../sql_que
 import {relaciones_necesarias} from '../sql_queries/relaciones-necesarias';
 import {relaciones_requiere_integridad_referencial} from '../sql_queries/relaciones-requieren-integridad-referencial';
 import {triggers_consulta} from '../sql_queries/triggers';
+import {relaciones_necesarias_V2} from '../sql_queries/relaciones-necesarias-v2';
 
 @Component({
   selector: 'app-anomalias-datos',
@@ -133,6 +134,14 @@ export class AnomaliasDatosComponent implements OnInit {
       error1 => {
         this.error = error1;
       },
+    );
+  }
+  obtenerHijosSinPadres() {
+    this._db_connection.ejecutarSQL(relaciones_necesarias_V2).subscribe(
+      value => {
+        this.respuesta = value;
+        console.log(this.respuesta);
+      }
     );
   }
 }
