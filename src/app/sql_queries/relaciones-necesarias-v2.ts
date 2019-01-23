@@ -32,16 +32,14 @@ select CAST(OBJECT_ID_PK as varchar(255)) %2B '-' %2B CAST(COLUMN_ID_PK as varch
 	on fkc.parent_object_id = col.object_id 
 	and fkc.parent_column_id = col.column_id 
 	
-	)
+	) 
 
-) C2
+) C2 
 	where C1.[COL_NAME (PK)] = C2.COL_NAME and C1.OBJECT_ID_PK != C2.OBJECT_ID 
-) S1
+) S1 
  left join 
-(
-	select CAST(referenced_object_id as varchar(255)) %2B '-' %2B 
-		   CAST(referenced_column_id as varchar(255)) %2B '-' %2B 
-		   CAST(parent_object_id as varchar(255)) %2B'-'%2B CAST(parent_column_id as varchar(255)) as RCODE 
-		   from sys.foreign_key_columns) S2 
-	on S1.CODE = S2.RCODE 
+( 
+	select CAST(referenced_object_id as varchar(255)) %2B '-' %2B CAST(referenced_column_id as varchar(255)) %2B '-' %2B CAST(parent_object_id as varchar(255)) %2B'-'%2B CAST(parent_column_id as varchar(255)) as RCODE 
+		   from sys.foreign_key_columns ) S2 
+	on S1.CODE = S2.RCODE; 
 	`;
