@@ -42,6 +42,6 @@ left join
 	select CAST(referenced_object_id as varchar(255)) %2B '-' %2B 
 		   CAST(referenced_column_id as varchar(255)) %2B '-' %2B
 		   CAST(parent_object_id as varchar(255)) %2B'-'%2B CAST(parent_column_id as varchar(255)) as RCODE
-		   from sys.foreign_key_columns) S2
+		   from sys.foreign_key_columns) S2 
 	on S1.CODE = s2.RCODE
 	`;
