@@ -83,7 +83,7 @@ export class AnomaliasRelacionesComponent implements OnInit {
       value => {
         this.respuesta = value;
         if (this.respuesta !== null) {
-          this.cabecerasTS = Object.keys(this.respuesta[0]);
+          this.cabecerasDE = Object.keys(this.respuesta[0]);
           this.datosDE = Object.values(this.respuesta);
           console.log(this.respuesta);
         }
