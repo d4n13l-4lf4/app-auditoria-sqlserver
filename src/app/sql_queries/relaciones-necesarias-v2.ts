@@ -1,5 +1,5 @@
 export const relaciones_necesarias_V2 = `
-select * from (
+select S1.[TABLE_NAME (PK)], S1.[COL_NAME (PK)], S1.[TABLE_NAME], S1.[COL_NAME] from (
 select CAST(OBJECT_ID_PK as varchar(255)) %2B '-' %2B CAST(COLUMN_ID_PK as varchar(255)) %2B'-'%2B CAST(OBJECT_ID as varchar(255)) %2B'-'%2B CAST(COLUMN_ID as varchar(255)) as 'CODE', * from 
 (
 	select * from (select * from (select CAST(ind.object_id as varchar(255)) %2B'-'%2B CAST(indc.column_id as varchar(255)) as PK_CODE, ind.object_id as 'OBJECT_ID_PK', indc.column_id as 'COLUMN_ID_PK',
@@ -22,7 +22,7 @@ select CAST(OBJECT_ID_PK as varchar(255)) %2B '-' %2B CAST(COLUMN_ID_PK as varch
 	from sys.tables as tab 
 	inner join sys.columns as col 
 	on tab.object_id = col.object_id ) s1 
-	where s1.COLUMN_IDE NOT IN 
+	where s1.COLUMN_IDE NOT IN   
 	(
 	select CAST(tab.object_id AS varchar(255)) %2B'-'%2B CAST(col.column_id AS varchar(255)) as 'FK_COL' 
 	from sys.tables as tab 
@@ -39,7 +39,6 @@ select CAST(OBJECT_ID_PK as varchar(255)) %2B '-' %2B CAST(COLUMN_ID_PK as varch
 ) S1 
  left join 
 ( 
-	select CAST(referenced_object_id as varchar(255)) %2B '-' %2B CAST(referenced_column_id as varchar(255)) %2B '-' %2B CAST(parent_object_id as varchar(255)) %2B'-'%2B CAST(parent_column_id as varchar(255)) as RCODE 
-		   from sys.foreign_key_columns ) S2 
+	select CAST(referenced_object_id as varchar(255)) %2B '-' %2B CAST(referenced_column_id as varchar(255)) %2B '-' %2B CAST(parent_object_id as varchar(255)) %2B'-'%2B CAST(parent_column_id as varchar(255)) as RCODE from sys.foreign_key_columns ) S2 
 	on S1.CODE = S2.RCODE; 
 	`;
