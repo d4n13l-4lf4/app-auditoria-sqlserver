@@ -78,7 +78,7 @@ export class AnomaliasDatosComponent implements OnInit {
     }
   }
   obtenerAnomaliaDatos() {
-    this._db_connection.ejecutarSQL(relaciones_necesarias).subscribe(
+    this._db_connection.ejecutarSQL(relaciones_necesarias_V2).subscribe(
       value => {
         this.respuesta = value;
         if (this.respuesta.length !== 0) {
@@ -134,14 +134,6 @@ export class AnomaliasDatosComponent implements OnInit {
       error1 => {
         this.error = error1;
       },
-    );
-  }
-  obtenerHijosSinPadres() {
-    this._db_connection.ejecutarSQL(relaciones_necesarias_V2).subscribe(
-      value => {
-        this.respuesta = value;
-        console.log(this.respuesta);
-      }
     );
   }
 }
